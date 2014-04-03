@@ -7,38 +7,6 @@
 require "curses"
 include Curses
 
-#define Tile_num as their own class
-class Tile_num
-
-	value = 0
-	location_x = 0
-	location_y = 0
-
-	def initialize
-		value = 0
-		location_x = 0
-		location_y = 0
-	end
-
-	def check_location
-		return [location_x, location_y]
-	end
-
-	def check_value
-		return value
-	end
-
-	def set_location(x, y)
-		location_x = x
-		location_y = y
-	end
-
-	def set_value(new_value)
-		value = new_value
-	end
-
-end
-
 #define the grid of tiles
 class Board_tiles
 	@boardgrid
@@ -48,7 +16,7 @@ class Board_tiles
 	end
 
 	def initialize
-		@boardgrid = Array.new(4, Tile_num.new) {Array.new(4, Tile_num.new)}
+		@boardgrid = Array.new(4, 0) {Array.new(4) |i| 0}
 		srand
 
 		temp_loc_x = rand(1..4)
