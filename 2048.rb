@@ -16,15 +16,15 @@ class Board_tiles
 	end
 
 	def initialize
-		@boardgrid = Array.new(4, 0) {Array.new(4) |i| 0}
+		@boardgrid = Array.new(4, 0) {Array.new(4)}
 		srand
 
 		temp_loc_x = rand(1..4)
 		temp_loc_y = rand(1..4)
 
 		for i in 0..1
-			@boardgrid[temp_loc_y][temp_loc_x].set_location(temp_loc_x, temp_loc_y)
-			@boardgrid[temp_loc_y][temp_loc_x].set_value(2*rand(1..(i + 1)))
+			#@boardgrid[temp_loc_y][temp_loc_x].set_location(temp_loc_x, temp_loc_y)
+			@boardgrid[temp_loc_y][temp_loc_x] = 2*rand(1..(i + 1))
 		end
 
 	end
@@ -72,7 +72,7 @@ class Game_Curses_Board < Board_tiles
 		for i in (1..7)
 			list = ""
 			if(i % 2 == 1)
-				list += boardgrid[line_index][i].to_s
+				list += @boardgrid[line_index][i].to_s
 			else
 				list += ' '
 			end
